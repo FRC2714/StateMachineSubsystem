@@ -34,8 +34,9 @@ public class CubeManipulator extends Subsystem {
   boolean wantsScoring = false;
 
   // define sparks
-  Spark elevator1 = new Spark(0);
-  Spark elevator2 = new Spark(1);
+  //elevator1 motor is dead
+  Spark elevator1 = new Spark(5);
+  Spark elevator2 = new Spark(6);
   Spark intakeLeft = new Spark(2);
   Spark intakeRight = new Spark(3);
 
@@ -56,11 +57,13 @@ public class CubeManipulator extends Subsystem {
   public void elevatorUp() {
     while (elevatorEncoder.get() < 1000) {
 
-      elevator1.set(0.5);
+      //elevator1.set(0.5);
       elevator2.set(0.5);
       System.out.println(elevatorEncoder.get());
 
     }
+    elevator1.set(0);
+    elevator2.set(0);
 
   }
 

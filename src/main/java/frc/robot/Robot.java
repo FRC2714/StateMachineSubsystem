@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.CubeManipulator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   Command m_autonomousCommand;
+  static CubeManipulator cube = new CubeManipulator();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -109,6 +111,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    cube.elevatorEncoder.reset();
   }
 
   /**
@@ -116,6 +119,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    cube.elevatorUp();
     Scheduler.getInstance().run();
   }
 
