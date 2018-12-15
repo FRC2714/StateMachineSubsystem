@@ -54,8 +54,13 @@ public class CubeManipulator extends Subsystem {
   }
 
   public void elevatorUp() {
-    elevator1.set(0.5);
-    elevator2.set(0.5);
+    while (elevatorEncoder.get() < 1000) {
+
+      elevator1.set(0.5);
+      elevator2.set(0.5);
+      System.out.println(elevatorEncoder.get());
+
+    }
 
   }
 
